@@ -169,32 +169,6 @@
         /* ============================================================
            HIỆU ỨNG MA THUẬT — ĐỒNG HỒ XOAY (HERO BADGE)
            ============================================================ */
-        .clock-badge {
-            position: absolute;
-            bottom: 80px; left: 50%;
-            transform: translateX(-50%);
-            z-index: 2;
-            width: 90px; height: 90px;
-            border: 2px solid var(--gold);
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-family: var(--font-heading);
-            font-size: .75rem; color: var(--gold);
-            letter-spacing: 1px; text-align: center; line-height: 1.3;
-            background: rgba(14,14,18,.6);
-            backdrop-filter: blur(6px);
-            animation: clock-spin 20s linear infinite;
-            pointer-events: none;
-        }
-        .clock-badge::before {
-            content: '';
-            position: absolute; inset: -8px;
-            border-radius: 50%;
-            border: 1px dashed rgba(212,175,55,.35);
-            animation: clock-spin 30s linear infinite reverse;
-        }
-        @keyframes clock-spin { to { transform: translateX(-50%) rotate(360deg); } }
-
         /* ============================================================
            HIỆU ỨNG MA THUẬT — SAO BĂNG QUA ẢNH (HOVER)
            ============================================================ */
@@ -381,7 +355,6 @@
             .about, .gallery-section { padding: 64px 16px; }
             .gallery-grid { grid-template-columns: 1fr; gap: 16px; }
             .gallery-item { aspect-ratio: 16/10; }
-            .clock-badge { width: 70px; height: 70px; font-size: .6rem; bottom: 70px; }
             .magic-ring--1 { width: 200px; height: 200px; }
             .magic-ring--2 { width: 300px; height: 300px; }
             .magic-ring--3 { width: 400px; height: 400px; }
@@ -417,7 +390,6 @@
         <div class="magic-ring magic-ring--1"></div>
         <div class="magic-ring magic-ring--2"></div>
         <div class="magic-ring magic-ring--3"></div>
-        <div class="clock-badge">ĐỒNG<br>HỒ<br>MA THUẬT</div>
 
         <div class="hero-content">
             <h1 class="glow-text" data-i18n="hero_title">ハリーうさぎと<br>消えたマジシャン</h1>
@@ -546,26 +518,6 @@
     </section>
 
     <!-- ============================================================
-         HẬU TRƯỜNG THI CÔNG
-         ============================================================ -->
-    <section class="gallery-section" id="behind">
-        <div class="container">
-            <h2 class="section-title fade-up" data-i18n="behind_title">舞台裏</h2>
-
-            <div class="single-image">
-                <div class="gallery-item magic-shine fade-up" data-src="images/dung-san-khau.jpg">
-                    <img src="images/dung-san-khau.jpg" alt="Stage construction in progress" loading="lazy">
-                    <div class="gallery-caption" data-i18n="behind_cap1">現場での設営プロセス</div>
-                </div>
-            </div>
-
-            <p class="desc fade-up" style="margin-top:28px;" data-i18n="behind_desc">
-                図面から現場へ — 機材の搬入、ステージフレームの組み立て、セットの配置、キャラクターの設置、電気系統の接続。すべての工程が安全とスケジュールを守るために厳密に管理されました。
-            </p>
-        </div>
-    </section>
-
-    <!-- ============================================================
          FOOTER
          ============================================================ -->
     <footer class="footer" id="contact">
@@ -621,9 +573,6 @@
                     ctrl_title: '制御システム',
                     ctrl_desc: '中央制御盤 — すべての動きを同期かつ安全に制御します。',
                     ctrl_cap1: '中央制御盤',
-                    behind_title: '舞台裏',
-                    behind_desc: '図面から現場へ — 機材の搬入、ステージフレームの組み立て、セットの配置、キャラクターの設置、電気系統の接続。すべての工程が安全とスケジュールを守るために厳密に管理されました。',
-                    behind_cap1: '現場での設営プロセス',
                     footer_contact: 'お問い合わせ:'
                 },
                 en: {
@@ -652,9 +601,6 @@
                     ctrl_title: 'Control System',
                     ctrl_desc: 'Central control cabinet — synchronizing and safeguarding all movements.',
                     ctrl_cap1: 'Central control cabinet',
-                    behind_title: 'Behind the Scenes',
-                    behind_desc: 'From drawings to site — transporting equipment, assembling stage frames, arranging scenery, installing characters, and connecting electrical systems. Every step was strictly monitored for safety and schedule compliance.',
-                    behind_cap1: 'Stage construction in progress',
                     footer_contact: 'Contact:'
                 },
                 vi: {
@@ -683,9 +629,6 @@
                     ctrl_title: 'Hệ thống điều khiển',
                     ctrl_desc: 'Tủ điện điều khiển trung tâm — đảm bảo mọi chuyển động diễn ra đồng bộ và an toàn.',
                     ctrl_cap1: 'Tủ điện điều khiển trung tâm',
-                    behind_title: 'Hậu trường thi công',
-                    behind_desc: 'Từ bản vẽ đến hiện trường — vận chuyển thiết bị, dựng khung sân khấu, bố trí cảnh trí, lắp đặt nhân vật và đấu nối hệ thống điện. Mỗi bước đều được giám sát chặt chẽ để đảm bảo an toàn và đúng tiến độ.',
-                    behind_cap1: 'Quá trình lắp dựng sân khấu',
                     footer_contact: 'Liên hệ:'
                 }
             };
