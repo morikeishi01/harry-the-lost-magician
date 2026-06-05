@@ -73,6 +73,60 @@
         }
 
         /* ============================================================
+           LANGUAGE SWITCHER
+           ============================================================ */
+        .lang-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 999;
+            display: flex;
+            gap: 6px;
+            background: rgba(14, 14, 18, 0.85);
+            backdrop-filter: blur(12px);
+            padding: 6px;
+            border-radius: 8px;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .lang-btn {
+            padding: 6px 14px;
+            border: none;
+            border-radius: 6px;
+            background: transparent;
+            color: var(--color-text-muted);
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            letter-spacing: 0.5px;
+        }
+
+        .lang-btn:hover {
+            color: var(--color-text);
+            background: rgba(139, 92, 246, 0.15);
+        }
+
+        .lang-btn.active {
+            background: var(--color-purple);
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .lang-switcher {
+                top: 12px;
+                right: 12px;
+                padding: 4px;
+                gap: 4px;
+            }
+            .lang-btn {
+                padding: 5px 10px;
+                font-size: 0.8rem;
+            }
+        }
+
+        /* ============================================================
            UTILITY
            ============================================================ */
         .container {
@@ -157,7 +211,6 @@
             z-index: 0;
         }
 
-        /* Overlay tối để chữ đọc được */
         .hero-overlay {
             position: absolute;
             inset: 0;
@@ -201,7 +254,6 @@
             letter-spacing: 1px;
         }
 
-        /* Scroll indicator */
         .hero-scroll {
             position: absolute;
             bottom: 32px;
@@ -301,7 +353,6 @@
             box-shadow: 0 12px 40px rgba(139, 92, 246, 0.25);
         }
 
-        /* Caption overlay */
         .gallery-caption {
             position: absolute;
             bottom: 0;
@@ -315,7 +366,6 @@
             pointer-events: none;
         }
 
-        /* Play button overlay cho video */
         .gallery-item.video-item::after {
             content: '▶';
             position: absolute;
@@ -340,7 +390,6 @@
             transform: translate(-50%, -50%) scale(1.1);
         }
 
-        /* Mô tả kỹ thuật */
         .tech-description {
             margin-top: 32px;
             padding: 28px;
@@ -362,28 +411,6 @@
             color: var(--color-text-muted);
             line-height: 1.8;
             font-weight: 300;
-        }
-
-        .tech-description ul {
-            list-style: none;
-            margin-top: 12px;
-        }
-
-        .tech-description ul li {
-            font-size: 0.95rem;
-            color: var(--color-text-muted);
-            padding: 6px 0 6px 20px;
-            position: relative;
-            font-weight: 300;
-        }
-
-        .tech-description ul li::before {
-            content: '◆';
-            position: absolute;
-            left: 0;
-            color: var(--color-purple);
-            font-size: 0.6rem;
-            top: 10px;
         }
 
         /* ============================================================
@@ -540,15 +567,24 @@
 <body>
 
     <!-- ============================================================
+         LANGUAGE SWITCHER
+         ============================================================ -->
+    <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="vi">VI</button>
+        <button class="lang-btn" data-lang="ja">JP</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+
+    <!-- ============================================================
          HERO / BANNER
          ============================================================ -->
     <section class="hero" id="hero">
-        <div class="hero-bg" role="img" aria-label="Lâu đài cổ tích lên đèn ban đêm"></div>
+        <div class="hero-bg" role="img" aria-label="Fairy castle lit up at night"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1 class="hero-title">Chú Thỏ Harry &<br>Ảo Thuật Gia Mất Tích</h1>
-            <p class="hero-title-en">Harry & The Lost Magician</p>
-            <p class="hero-tagline">Thiết kế & thi công sân khấu trình diễn animatronic</p>
+            <h1 class="hero-title" data-i18n="hero_title">Chú Thỏ Harry &<br>Ảo Thuật Gia Mất Tích</h1>
+            <p class="hero-title-en" data-i18n="hero_title_en">Harry & The Lost Magician</p>
+            <p class="hero-tagline" data-i18n="hero_tagline">Thiết kế & thi công sân khấu trình diễn animatronic</p>
         </div>
         <div class="hero-scroll"><span></span></div>
     </section>
@@ -558,15 +594,15 @@
          ============================================================ -->
     <section class="about" id="about">
         <div class="container">
-            <h2 class="section-title fade-in">Giới thiệu dự án</h2>
+            <h2 class="section-title fade-in" data-i18n="about_title">Giới thiệu dự án</h2>
             <div class="about-grid">
-                <p class="fade-in">
+                <p class="fade-in" data-i18n="about_p1">
                     <strong>"Chú Thỏ Harry & Ảo Thuật Gia Mất Tích"</strong> là một show diễn nhập vai được tổ chức tại lâu đài cổ tích thuộc công viên giải trí ở Nha Trang, Khánh Hòa. Show kết hợp giữa <strong>nhân vật animatronic chuyển động</strong>, màn ảo thuật sân khấu và hệ thống hiệu ứng ánh sáng – khói – âm thanh, mang đến trải nghiệm sống động cho khán giả.
                 </p>
-                <p class="about-highlight fade-in">
+                <p class="about-highlight fade-in" data-i18n="about_p2">
                     Trong dự án này, tôi phụ trách phần <strong>thiết kế & thi công kỹ thuật sân khấu</strong> — bao gồm thiết kế cảnh trí, chế tạo và lắp đặt các nhân vật animatronic chuyển động, cùng hệ thống điều khiển cơ – điện.
                 </p>
-                <p class="fade-in">
+                <p class="fade-in" data-i18n="about_p3">
                     Dự án được thực hiện trong năm 2023, đòi hỏi sự phối hợp giữa kỹ năng cơ khí, lập trình điều khiển và tư duy thiết kế sân khấu để mỗi nhân vật chuyển động mượt mà, đồng bộ với kịch bản trình diễn.
                 </p>
             </div>
@@ -578,32 +614,28 @@
          ============================================================ -->
     <section class="gallery-section" id="set-design">
         <div class="container">
-            <h2 class="section-title fade-in">Thiết kế sân khấu</h2>
-            <p class="section-subtitle fade-in">Toàn cảnh không gian trình diễn bên trong lâu đài — nơi kết hợp cảnh trí, ánh sáng và đạo cụ sân khấu.</p>
+            <h2 class="section-title fade-in" data-i18n="set_title">Thiết kế sân khấu</h2>
+            <p class="section-subtitle fade-in" data-i18n="set_subtitle">Toàn cảnh không gian trình diễn bên trong lâu đài — nơi kết hợp cảnh trí, ánh sáng và đạo cụ sân khấu.</p>
 
             <div class="gallery-grid">
-                <!-- Ảnh 1: Toàn cảnh sân khấu -->
                 <div class="gallery-item fade-in" data-type="image" data-src="hinh-san-khau-anh-tim.jpg">
-                    <img src="hinh-san-khau-anh-tim.jpg" alt="Toàn cảnh sân khấu với cảnh trí cầu thang, cột La Mã, ánh sáng tím đỏ" loading="lazy">
-                    <div class="gallery-caption">Toàn cảnh sân khấu — cầu thang, cột La Mã, đèn dây</div>
+                    <img src="hinh-san-khau-anh-tim.jpg" alt="Stage overview with staircase, Roman columns, purple-red lighting" loading="lazy">
+                    <div class="gallery-caption" data-i18n="set_cap1">Toàn cảnh sân khấu — cầu thang, cột La Mã, đèn dây</div>
                 </div>
 
-                <!-- Ảnh 2: Nhân vật bạc -->
                 <div class="gallery-item fade-in" data-type="image" data-src="hinh-nhan-vat-bac.jpg">
-                    <img src="hinh-nhan-vat-bac.jpg" alt="Nhân vật ảo thuật gia bộ đồ ánh kim trên sân khấu" loading="lazy">
-                    <div class="gallery-caption">Nhân vật ảo thuật gia — bộ đồ ánh kim</div>
+                    <img src="hinh-nhan-vat-bac.jpg" alt="Magician character in metallic costume on stage" loading="lazy">
+                    <div class="gallery-caption" data-i18n="set_cap2">Nhân vật ảo thuật gia — bộ đồ ánh kim</div>
                 </div>
 
-                <!-- Ảnh 3: Nhân vật đồng -->
                 <div class="gallery-item fade-in" data-type="image" data-src="hinh-nhan-vat-dong.jpg">
-                    <img src="hinh-nhan-vat-dong.jpg" alt="Nhân vật ảo thuật gia màu đồng với hiệu ứng khói và chú thỏ trắng" loading="lazy">
-                    <div class="gallery-caption">Nhân vật đồng — hiệu ứng khói & ánh sáng</div>
+                    <img src="hinh-nhan-vat-dong.jpg" alt="Bronze magician with smoke effect and white rabbit" loading="lazy">
+                    <div class="gallery-caption" data-i18n="set_cap3">Nhân vật đồng — hiệu ứng khói & ánh sáng</div>
                 </div>
 
-                <!-- Ảnh 4: Extra -->
                 <div class="gallery-item fade-in" data-type="image" data-src="z4940902240363_86bcfb42432639018509bf1b32309b12.jpg">
-                    <img src="z4940902240363_86bcfb42432639018509bf1b32309b12.jpg" alt="Hình ảnh thiết kế sân khấu bổ sung" loading="lazy">
-                    <div class="gallery-caption">Cảnh trí sân khấu — góc nhìn bổ sung</div>
+                    <img src="z4940902240363_86bcfb42432639018509bf1b32309b12.jpg" alt="Additional stage design view" loading="lazy">
+                    <div class="gallery-caption" data-i18n="set_cap4">Cảnh trí sân khấu — góc nhìn bổ sung</div>
                 </div>
             </div>
         </div>
@@ -614,36 +646,30 @@
          ============================================================ -->
     <section class="gallery-section" id="animatronic">
         <div class="container">
-            <h2 class="section-title fade-in">Nhân vật Animatronic</h2>
-            <p class="section-subtitle fade-in">Quy trình chế tạo nhân vật robot chuyển động — từ mô hình 3D đến sản phẩm hoàn thiện.</p>
+            <h2 class="section-title fade-in" data-i18n="ani_title">Nhân vật Animatronic</h2>
+            <p class="section-subtitle fade-in" data-i18n="ani_subtitle">Quy trình chế tạo nhân vật robot chuyển động — từ mô hình 3D đến sản phẩm hoàn thiện.</p>
 
             <div class="gallery-grid">
-                <!-- Ảnh: Model 3D thỏ -->
                 <div class="gallery-item fade-in" data-type="image" data-src="hinh-model-3d-tho.jpg">
-                    <img src="hinh-model-3d-tho.jpg" alt="Bản dựng 3D mô hình robot thỏ trắng" loading="lazy">
-                    <div class="gallery-caption">Mô hình 3D robot thỏ</div>
+                    <img src="hinh-model-3d-tho.jpg" alt="3D model of white rabbit robot" loading="lazy">
+                    <div class="gallery-caption" data-i18n="ani_cap1">Mô hình 3D robot thỏ</div>
                 </div>
 
-                <!-- Ảnh: Cơ khí thỏ -->
                 <div class="gallery-item fade-in" data-type="image" data-src="hinh-co-khi-tho.jpg">
-                    <img src="hinh-co-khi-tho.jpg" alt="Cấu trúc cơ khí bên trong robot thỏ với servo và dây điện" loading="lazy">
-                    <div class="gallery-caption">Cơ cấu servo & dây điện bên trong lớp lông</div>
+                    <img src="hinh-co-khi-tho.jpg" alt="Internal servo mechanism and wiring of rabbit robot" loading="lazy">
+                    <div class="gallery-caption" data-i18n="ani_cap2">Cơ cấu servo & dây điện bên trong lớp lông</div>
                 </div>
 
-                <!-- Video 1 -->
                 <div class="gallery-item video-item fade-in" data-type="video" data-src="vp9.mp4">
                     <video src="vp9.mp4" muted preload="metadata" playsinline></video>
-                    <div class="gallery-caption">Video vận hành robot thỏ #1</div>
+                    <div class="gallery-caption" data-i18n="ani_cap3">Video vận hành robot thỏ #1</div>
                 </div>
 
-                <!-- Video 2 -->
                 <div class="gallery-item video-item fade-in" data-type="video" data-src="vp10.mp4">
                     <video src="vp10.mp4" muted preload="metadata" playsinline></video>
-                    <div class="gallery-caption">Video vận hành robot thỏ #2</div>
+                    <div class="gallery-caption" data-i18n="ani_cap4">Video vận hành robot thỏ #2</div>
                 </div>
             </div>
-
-
         </div>
     </section>
 
@@ -652,18 +678,15 @@
          ============================================================ -->
     <section class="gallery-section" id="control-system">
         <div class="container">
-            <h2 class="section-title fade-in">Hệ thống điều khiển</h2>
-            <p class="section-subtitle fade-in">Tủ điện điều khiển trung tâm — đảm bảo mọi chuyển động diễn ra đồng bộ và an toàn.</p>
+            <h2 class="section-title fade-in" data-i18n="ctrl_title">Hệ thống điều khiển</h2>
+            <p class="section-subtitle fade-in" data-i18n="ctrl_subtitle">Tủ điện điều khiển trung tâm — đảm bảo mọi chuyển động diễn ra đồng bộ và an toàn.</p>
 
             <div class="gallery-grid" style="max-width: 640px;">
-                <!-- Ảnh: Tủ điện -->
                 <div class="gallery-item fade-in" data-type="image" data-src="hinh-tu-dien.jpg">
-                    <img src="hinh-tu-dien.jpg" alt="Tủ điện điều khiển với PLC, servo drive và các thiết bị bảo vệ" loading="lazy">
-                    <div class="gallery-caption">Tủ điện điều khiển trung tâm</div>
+                    <img src="hinh-tu-dien.jpg" alt="Control cabinet with PLC, servo drives and protection devices" loading="lazy">
+                    <div class="gallery-caption" data-i18n="ctrl_cap1">Tủ điện điều khiển trung tâm</div>
                 </div>
             </div>
-
-
         </div>
     </section>
 
@@ -674,7 +697,7 @@
         <div class="container">
             <p class="footer-name">Mori Keishi</p>
             <p class="footer-contact">
-                Liên hệ: <a href="mailto:mori.keishi01@gmail.com">mori.keishi01@gmail.com</a>
+                <span data-i18n="footer_contact">Liên hệ:</span> <a href="mailto:mori.keishi01@gmail.com">mori.keishi01@gmail.com</a>
             </p>
             <div class="footer-divider"></div>
             <p class="footer-copy">&copy; 2023 — All rights reserved.</p>
@@ -690,45 +713,162 @@
     </div>
 
     <!-- ============================================================
-         JAVASCRIPT
+         JAVASCRIPT — ĐA NGÔN NGỮ + LIGHTBOX + FADE-IN
          ============================================================ -->
     <script>
         // ============================================================
-        // 1. FADE-IN khi cuộn trang (IntersectionObserver)
+        // 1. BẢN DỊCH — VI / JA / EN
+        // ============================================================
+        var translations = {
+            vi: {
+                hero_title: 'Chú Thỏ Harry &<br>Ảo Thuật Gia Mất Tích',
+                hero_title_en: 'Harry & The Lost Magician',
+                hero_tagline: 'Thiết kế & thi công sân khấu trình diễn animatronic',
+                about_title: 'Giới thiệu dự án',
+                about_p1: '<strong>"Chú Thỏ Harry & Ảo Thuật Gia Mất Tích"</strong> là một show diễn nhập vai được tổ chức tại lâu đài cổ tích thuộc công viên giải trí ở Nha Trang, Khánh Hòa. Show kết hợp giữa <strong>nhân vật animatronic chuyển động</strong>, màn ảo thuật sân khấu và hệ thống hiệu ứng ánh sáng – khói – âm thanh, mang đến trải nghiệm sống động cho khán giả.',
+                about_p2: 'Trong dự án này, tôi phụ trách phần <strong>thiết kế & thi công kỹ thuật sân khấu</strong> — bao gồm thiết kế cảnh trí, chế tạo và lắp đặt các nhân vật animatronic chuyển động, cùng hệ thống điều khiển cơ – điện.',
+                about_p3: 'Dự án được thực hiện trong năm 2023, đòi hỏi sự phối hợp giữa kỹ năng cơ khí, lập trình điều khiển và tư duy thiết kế sân khấu để mỗi nhân vật chuyển động mượt mà, đồng bộ với kịch bản trình diễn.',
+                set_title: 'Thiết kế sân khấu',
+                set_subtitle: 'Toàn cảnh không gian trình diễn bên trong lâu đài — nơi kết hợp cảnh trí, ánh sáng và đạo cụ sân khấu.',
+                set_cap1: 'Toàn cảnh sân khấu — cầu thang, cột La Mã, đèn dây',
+                set_cap2: 'Nhân vật ảo thuật gia — bộ đồ ánh kim',
+                set_cap3: 'Nhân vật đồng — hiệu ứng khói & ánh sáng',
+                set_cap4: 'Cảnh trí sân khấu — góc nhìn bổ sung',
+                ani_title: 'Nhân vật Animatronic',
+                ani_subtitle: 'Quy trình chế tạo nhân vật robot chuyển động — từ mô hình 3D đến sản phẩm hoàn thiện.',
+                ani_cap1: 'Mô hình 3D robot thỏ',
+                ani_cap2: 'Cơ cấu servo & dây điện bên trong lớp lông',
+                ani_cap3: 'Video vận hành robot thỏ #1',
+                ani_cap4: 'Video vận hành robot thỏ #2',
+                ctrl_title: 'Hệ thống điều khiển',
+                ctrl_subtitle: 'Tủ điện điều khiển trung tâm — đảm bảo mọi chuyển động diễn ra đồng bộ và an toàn.',
+                ctrl_cap1: 'Tủ điện điều khiển trung tâm',
+                footer_contact: 'Liên hệ:'
+            },
+            ja: {
+                hero_title: 'ハリーうさぎと<br>消えたマジシャン',
+                hero_title_en: 'Harry & The Lost Magician',
+                hero_tagline: 'アニマトロニクス・ステージショーの設計・施工',
+                about_title: 'プロジェクト紹介',
+                about_p1: '「<strong>ハリーうさぎと消えたマジシャン</strong>」は、ニャチャン（カインホア省）の遊園地にあるお城で開催される没入型ステージショーです。<strong>動くアニマトロニクスキャラクター</strong>、マジックパフォーマンス、ライト・煙・音響エフェクトを融合し、観客に臨場感あふれる体験を提供します。',
+                about_p2: '本プロジェクトでは、<strong>ステージ技術の設計・施工</strong>を担当しました。セットデザイン、アニマトロニクスキャラクターの製作・設置、そしてメカ・電気制御システムの構築を含みます。',
+                about_p3: '2023年に実施された本プロジェクトでは、精密機械工学、制御プログラミング、ステージデザインのスキルを融合し、各キャラクターが滑らかに動き、ショーの脚本と同期するようにしました。',
+                set_title: 'ステージデザイン',
+                set_subtitle: '城内のパフォーマンス空間全景 — セット、照明、小道具が融合した舞台。',
+                set_cap1: 'ステージ全景 — 階段、ローマ風柱、ライトストリング',
+                set_cap2: 'マジシャンキャラクター — メタリック衣装',
+                set_cap3: 'ブロンズキャラクター — 煙と光のエフェクト',
+                set_cap4: 'ステージセット — 追加アングル',
+                ani_title: 'アニマトロニクス',
+                ani_subtitle: '動くロボットキャラクターの製作プロセス — 3Dモデルから完成品まで。',
+                ani_cap1: 'うさぎロボットの3Dモデル',
+                ani_cap2: '毛皮内部のサーボ機構と配線',
+                ani_cap3: 'うさぎロボット動作ビデオ #1',
+                ani_cap4: 'うさぎロボット動作ビデオ #2',
+                ctrl_title: '制御システム',
+                ctrl_subtitle: '中央制御盤 — すべての動きを同期かつ安全に制御。',
+                ctrl_cap1: '中央制御盤',
+                footer_contact: 'お問い合わせ:'
+            },
+            en: {
+                hero_title: 'Harry & The<br>Lost Magician',
+                hero_title_en: 'Harry & The Lost Magician',
+                hero_tagline: 'Animatronic stage show — design & technical production',
+                about_title: 'About the Project',
+                about_p1: '"<strong>Harry & The Lost Magician</strong>" is an immersive stage show held at a fairy-tale castle in an amusement park in Nha Trang, Khanh Hoa. The show combines <strong>moving animatronic characters</strong>, magic performances, and light — smoke — sound effects to deliver a vivid experience for the audience.',
+                about_p2: 'In this project, I was responsible for <strong>stage technical design & production</strong> — including set design, fabrication and installation of animatronic characters, and the mechanical-electrical control system.',
+                about_p3: 'Carried out in 2023, the project required a blend of precision mechanical engineering, control programming, and stage design thinking to ensure each character moves smoothly and synchronizes with the show script.',
+                set_title: 'Set Design',
+                set_subtitle: 'Overview of the performance space inside the castle — where scenery, lighting, and props come together.',
+                set_cap1: 'Stage overview — staircase, Roman columns, string lights',
+                set_cap2: 'Magician character — metallic costume',
+                set_cap3: 'Bronze character — smoke & lighting effects',
+                set_cap4: 'Stage scenery — additional angle',
+                ani_title: 'Animatronic Characters',
+                ani_subtitle: 'The making of moving robot characters — from 3D model to finished product.',
+                ani_cap1: '3D model of rabbit robot',
+                ani_cap2: 'Servo mechanism & wiring inside the fur',
+                ani_cap3: 'Rabbit robot operation video #1',
+                ani_cap4: 'Rabbit robot operation video #2',
+                ctrl_title: 'Control System',
+                ctrl_subtitle: 'Central control cabinet — ensuring all movements are synchronized and safe.',
+                ctrl_cap1: 'Central control cabinet',
+                footer_contact: 'Contact:'
+            }
+        };
+
+        // ============================================================
+        // 2. HÀM CHUYỂN NGÔN NGỮ
+        // ============================================================
+        function setLanguage(lang) {
+            var t = translations[lang];
+            if (!t) return;
+
+            // Dịch tất cả phần tử có data-i18n
+            var elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(function (el) {
+                var key = el.getAttribute('data-i18n');
+                if (t[key]) {
+                    el.innerHTML = t[key];
+                }
+            });
+
+            // Cập nhật thuộc tính lang của <html>
+            document.documentElement.lang = lang;
+
+            // Cập nhật nút active
+            document.querySelectorAll('.lang-btn').forEach(function (btn) {
+                btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+            });
+
+            // Lưu lựa chọn vào localStorage
+            localStorage.setItem('preferred-lang', lang);
+        }
+
+        // ============================================================
+        // 3. KHỞI TẠO
         // ============================================================
         document.addEventListener('DOMContentLoaded', function () {
-            const fadeElements = document.querySelectorAll('.fade-in');
 
-            const observer = new IntersectionObserver(function (entries) {
+            // --- Ngôn ngữ: đọc từ localStorage hoặc mặc định 'vi' ---
+            var savedLang = localStorage.getItem('preferred-lang') || 'vi';
+            setLanguage(savedLang);
+
+            // Gán sự kiện cho nút ngôn ngữ
+            document.querySelectorAll('.lang-btn').forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    setLanguage(btn.getAttribute('data-lang'));
+                });
+            });
+
+            // --- Fade-in khi cuộn ---
+            var fadeElements = document.querySelectorAll('.fade-in');
+            var observer = new IntersectionObserver(function (entries) {
                 entries.forEach(function (entry) {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-                        observer.unobserve(entry.target); // chỉ animate 1 lần
+                        observer.unobserve(entry.target);
                     }
                 });
             }, {
                 threshold: 0.15,
                 rootMargin: '0px 0px -40px 0px'
             });
-
             fadeElements.forEach(function (el) {
                 observer.observe(el);
             });
 
-            // ============================================================
-            // 2. LIGHTBOX cho ảnh & video
-            // ============================================================
-            const lightbox = document.getElementById('lightbox');
-            const lightboxContent = document.getElementById('lightbox-content');
-            const lightboxClose = document.getElementById('lightbox-close');
-            const galleryItems = document.querySelectorAll('.gallery-item');
+            // --- Lightbox cho ảnh & video ---
+            var lightbox = document.getElementById('lightbox');
+            var lightboxContent = document.getElementById('lightbox-content');
+            var lightboxClose = document.getElementById('lightbox-close');
+            var galleryItems = document.querySelectorAll('.gallery-item');
 
             galleryItems.forEach(function (item) {
                 item.addEventListener('click', function (e) {
                     e.stopPropagation();
-                    const type = item.getAttribute('data-type');
-                    const src = item.getAttribute('data-src');
-
+                    var type = item.getAttribute('data-type');
+                    var src = item.getAttribute('data-src');
                     lightboxContent.innerHTML = '';
 
                     if (type === 'image') {
@@ -752,11 +892,9 @@
                 });
             });
 
-            // Đóng lightbox
             function closeLightbox() {
                 lightbox.classList.remove('active');
                 document.body.style.overflow = '';
-                // Dừng video nếu đang phát
                 var vid = lightboxContent.querySelector('video');
                 if (vid) {
                     vid.pause();
@@ -776,32 +914,24 @@
                 }
             });
 
-            // Đóng bằng phím ESC
             document.addEventListener('keydown', function (e) {
                 if (e.key === 'Escape') {
                     closeLightbox();
                 }
             });
 
-            // ============================================================
-            // 3. Tự động pause/play video khi vào/ra viewport (tiết kiệm tài nguyên)
-            // ============================================================
+            // --- Tự động pause/play video khi vào/ra viewport ---
             var videos = document.querySelectorAll('.gallery-item.video-item video');
-
             var videoObserver = new IntersectionObserver(function (entries) {
                 entries.forEach(function (entry) {
                     var vid = entry.target;
                     if (entry.isIntersecting) {
-                        vid.play().catch(function () {
-                            // Trình duyệt có thể chặn autoplay — bỏ qua
-                        });
+                        vid.play().catch(function () {});
                     } else {
                         vid.pause();
                     }
                 });
-            }, {
-                threshold: 0.5
-            });
+            }, { threshold: 0.5 });
 
             videos.forEach(function (vid) {
                 videoObserver.observe(vid);
