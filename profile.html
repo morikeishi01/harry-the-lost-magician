@@ -349,6 +349,69 @@
         .footer-copy { font-size: .82rem; color: rgba(154,154,176,.55); font-weight: 300; }
 
         /* ============================================================
+           MUSIC CONTROL
+           ============================================================ */
+        .music-control {
+            position: fixed;
+            bottom: 24px; right: 24px;
+            z-index: 9998;
+            display: flex; align-items: center; gap: 10px;
+            background: rgba(14,14,18,.88);
+            backdrop-filter: blur(12px);
+            padding: 10px 16px;
+            border-radius: 50px;
+            border: 1px solid rgba(139,92,246,.25);
+            cursor: pointer;
+            transition: all .3s;
+            user-select: none;
+        }
+        .music-control:hover {
+            border-color: var(--purple);
+            box-shadow: 0 0 20px var(--purple-glow);
+        }
+        .music-icon {
+            width: 22px; height: 22px;
+            fill: var(--gold);
+            flex-shrink: 0;
+        }
+        .music-bars {
+            display: flex; align-items: flex-end; gap: 2px;
+            height: 18px;
+        }
+        .music-bars span {
+            display: block;
+            width: 3px;
+            background: var(--gold);
+            border-radius: 2px;
+            animation: music-bar 1s ease-in-out infinite;
+        }
+        .music-bars span:nth-child(1) { height: 8px; animation-delay: 0s; }
+        .music-bars span:nth-child(2) { height: 14px; animation-delay: .2s; }
+        .music-bars span:nth-child(3) { height: 10px; animation-delay: .4s; }
+        .music-bars span:nth-child(4) { height: 16px; animation-delay: .1s; }
+
+        @keyframes music-bar {
+            0%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(.4); }
+        }
+        .music-control.paused .music-bars span {
+            animation-play-state: paused;
+        }
+        .music-label {
+            font-size: .78rem;
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: .5px;
+        }
+        /* Ẩn YouTube iframe */
+        #ytPlayer { position: absolute; top: -9999px; left: -9999px; width: 1px; height: 1px; }
+
+        @media (max-width: 768px) {
+            .music-control { bottom: 16px; right: 16px; padding: 8px 12px; }
+            .music-label { display: none; }
+        }
+
+        /* ============================================================
            RESPONSIVE
            ============================================================ */
         @media (max-width: 768px) {
@@ -528,6 +591,19 @@
             <p class="footer-copy">&copy; 2023 — All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- ============================================================
+         MUSIC CONTROL
+         ============================================================ -->
+    <div class="music-control paused" id="musicControl" title="Play / Pause background music">
+        <svg class="music-icon" viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg>
+        <div class="music-bars"><span></span><span></span><span></span><span></span></div>
+        <span class="music-label">BGM</span>
+    </div>
+
+    <!-- YouTube IFrame API -->
+    <div id="ytPlayer"></div>
+    <script src="https://www.youtube.com/iframe_api"></script>
 
     <!-- ============================================================
          LIGHTBOX
@@ -770,6 +846,47 @@
                     heroBg.style.transform = 'translateY(' + (sy * 0.3) + 'px)';
                 }
             }, { passive: true });
+
+            /* ========================================================
+               7. YOUTUBE BACKGROUND MUSIC
+               ======================================================== */
+            var ytPlayer;
+            var musicBtn = document.getElementById('musicControl');
+            var musicReady = false;
+
+            // YouTube API sẵn sàng
+            window.onYouTubeIframeAPIReady = function () {
+                ytPlayer = new YT.Player('ytPlayer', {
+                    height: '1',
+                    width: '1',
+                    videoId: '9StIYopLH5c',
+                    playerVars: {
+                        autoplay: 0,
+                        loop: 1,
+                        playlist: '9StIYopLH5c',
+                        modestbranding: 1,
+                        controls: 0,
+                        mute: 0
+                    },
+                    events: {
+                        onReady: function () {
+                            musicReady = true;
+                            ytPlayer.setVolume(30);
+                        }
+                    }
+                });
+            };
+
+            musicBtn.addEventListener('click', function () {
+                if (!musicReady) return;
+                if (musicBtn.classList.contains('paused')) {
+                    ytPlayer.playVideo();
+                    musicBtn.classList.remove('paused');
+                } else {
+                    ytPlayer.pauseVideo();
+                    musicBtn.classList.add('paused');
+                }
+            });
 
         });
     </script>
