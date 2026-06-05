@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mori Keishi — Thiết kế & Thi công Sân khấu Animatronic</title>
-    <meta name="description" content="Profile dự án: Chú Thỏ Harry & Ảo Thuật Gia Mất Tích — thiết kế & thi công kỹ thuật sân khấu animatronic tại Nha Trang, 2023.">
+    <meta name="description" content="Portfolio: Harry & The Lost Magician — animatronic stage show design & production, Nha Trang 2023.">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,11 +15,7 @@
         /* ============================================================
            CSS RESET & BIẾN TOÀN CỤC
            ============================================================ */
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
             --bg:          #0E0E12;
@@ -51,14 +47,40 @@
             line-height: 1.2;
         }
 
-        a {
-            color: var(--purple);
-            text-decoration: none;
-            transition: color .3s;
-        }
+        a { color: var(--purple); text-decoration: none; transition: color .3s; }
         a:hover { color: var(--gold); }
-
         img { max-width: 100%; height: auto; display: block; }
+
+        /* ============================================================
+           LANGUAGE SWITCHER
+           ============================================================ */
+        .lang-switcher {
+            position: fixed;
+            top: 20px; right: 20px;
+            z-index: 9998;
+            display: flex; gap: 6px;
+            background: rgba(14,14,18,.85);
+            backdrop-filter: blur(12px);
+            padding: 6px;
+            border-radius: 8px;
+            border: 1px solid rgba(139,92,246,.2);
+        }
+        .lang-btn {
+            padding: 6px 14px;
+            border: none; border-radius: 6px;
+            background: transparent;
+            color: var(--text-muted);
+            font-family: var(--font-body);
+            font-size: .85rem; font-weight: 500;
+            cursor: pointer; transition: all .3s;
+            letter-spacing: .5px;
+        }
+        .lang-btn:hover { color: var(--text); background: rgba(139,92,246,.15); }
+        .lang-btn.active { background: var(--purple); color: #fff; }
+        @media (max-width: 768px) {
+            .lang-switcher { top: 12px; right: 12px; padding: 4px; gap: 4px; }
+            .lang-btn { padding: 5px 10px; font-size: .8rem; }
+        }
 
         /* ============================================================
            TIÊU ĐỀ SECTION — GẠCH CHÂN VÀNG
@@ -82,46 +104,33 @@
            FADE-IN KHI CUỘN
            ============================================================ */
         .fade-up {
-            opacity: 0;
-            transform: translateY(36px);
+            opacity: 0; transform: translateY(36px);
             transition: opacity .8s ease, transform .8s ease;
         }
-        .fade-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
 
         /* ============================================================
            CONTAINER
            ============================================================ */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 
         /* ============================================================
            HIỆU ỨNG MA THUẬT — TIA SÁNG BAY (CSS PARTICLES)
            ============================================================ */
         .magic-particles {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 9999;
+            position: fixed; inset: 0;
+            pointer-events: none; z-index: 9999;
             overflow: hidden;
         }
-
         .sparkle {
             position: absolute;
-            width: 6px;
-            height: 6px;
+            width: 6px; height: 6px;
             border-radius: 50%;
             background: var(--gold);
             box-shadow: 0 0 6px var(--gold), 0 0 12px var(--gold-light);
             animation: sparkle-rise linear infinite;
             opacity: 0;
         }
-
         @keyframes sparkle-rise {
             0%   { opacity: 0; transform: translateY(0) scale(.4); }
             15%  { opacity: 1; }
@@ -138,31 +147,27 @@
             border: 2px solid var(--purple);
             box-shadow: 0 0 30px var(--purple-glow), inset 0 0 30px var(--purple-glow);
             animation: ring-pulse 4s ease-in-out infinite;
-            pointer-events: none;
-            z-index: 1;
+            pointer-events: none; z-index: 1;
         }
-        .magic-ring--1 { width: 320px; height: 320px; top: 50%; left: 50%; transform: translate(-50%, -50%); animation-delay: 0s; }
-        .magic-ring--2 { width: 480px; height: 480px; top: 50%; left: 50%; transform: translate(-50%, -50%); animation-delay: 1.3s; }
-        .magic-ring--3 { width: 640px; height: 640px; top: 50%; left: 50%; transform: translate(-50%, -50%); animation-delay: 2.6s; }
-
+        .magic-ring--1 { width: 320px; height: 320px; top: 50%; left: 50%; transform: translate(-50%,-50%); animation-delay: 0s; }
+        .magic-ring--2 { width: 480px; height: 480px; top: 50%; left: 50%; transform: translate(-50%,-50%); animation-delay: 1.3s; }
+        .magic-ring--3 { width: 640px; height: 640px; top: 50%; left: 50%; transform: translate(-50%,-50%); animation-delay: 2.6s; }
         @keyframes ring-pulse {
-            0%, 100% { opacity: .15; transform: translate(-50%, -50%) scale(.92); }
-            50%      { opacity: .45; transform: translate(-50%, -50%) scale(1.08); }
+            0%,100% { opacity: .15; transform: translate(-50%,-50%) scale(.92); }
+            50%     { opacity: .45; transform: translate(-50%,-50%) scale(1.08); }
         }
 
         /* ============================================================
            HIỆU ỨNG MA THUẬT — CHỮ PHÁT SÁNG (GLOW)
            ============================================================ */
-        .glow-text {
-            animation: text-glow 3s ease-in-out infinite alternate;
-        }
+        .glow-text { animation: text-glow 3s ease-in-out infinite alternate; }
         @keyframes text-glow {
             0%   { text-shadow: 0 0 8px var(--purple-glow), 0 0 20px transparent; }
             100% { text-shadow: 0 0 16px var(--purple-glow), 0 0 40px var(--purple-glow); }
         }
 
         /* ============================================================
-           HIỆU ỨNG MA THUẬT — ĐỐNG HỒ XOAY (HERO BADGE)
+           HIỆU ỨNG MA THUẬT — ĐỒNG HỒ XOAY (HERO BADGE)
            ============================================================ */
         .clock-badge {
             position: absolute;
@@ -172,15 +177,10 @@
             width: 90px; height: 90px;
             border: 2px solid var(--gold);
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: flex; align-items: center; justify-content: center;
             font-family: var(--font-heading);
-            font-size: .75rem;
-            color: var(--gold);
-            letter-spacing: 1px;
-            text-align: center;
-            line-height: 1.3;
+            font-size: .75rem; color: var(--gold);
+            letter-spacing: 1px; text-align: center; line-height: 1.3;
             background: rgba(14,14,18,.6);
             backdrop-filter: blur(6px);
             animation: clock-spin 20s linear infinite;
@@ -188,44 +188,28 @@
         }
         .clock-badge::before {
             content: '';
-            position: absolute;
-            inset: -8px;
+            position: absolute; inset: -8px;
             border-radius: 50%;
             border: 1px dashed rgba(212,175,55,.35);
             animation: clock-spin 30s linear infinite reverse;
         }
-
-        @keyframes clock-spin {
-            to { transform: translateX(-50%) rotate(360deg); }
-        }
+        @keyframes clock-spin { to { transform: translateX(-50%) rotate(360deg); } }
 
         /* ============================================================
            HIỆU ỨNG MA THUẬT — SAO BĂNG QUA ẢNH (HOVER)
            ============================================================ */
-        .magic-shine {
-            position: relative;
-            overflow: hidden;
-        }
+        .magic-shine { position: relative; overflow: hidden; }
         .magic-shine::after {
             content: '';
             position: absolute;
-            top: -60%;
-            left: -60%;
-            width: 40%;
-            height: 200%;
-            background: linear-gradient(
-                115deg,
-                transparent 40%,
-                rgba(255,255,255,.12) 50%,
-                transparent 60%
-            );
+            top: -60%; left: -60%;
+            width: 40%; height: 200%;
+            background: linear-gradient(115deg, transparent 40%, rgba(255,255,255,.12) 50%, transparent 60%);
             transform: rotate(25deg) translateX(-200%);
             transition: transform .7s ease;
             pointer-events: none;
         }
-        .magic-shine:hover::after {
-            transform: rotate(25deg) translateX(400%);
-        }
+        .magic-shine:hover::after { transform: rotate(25deg) translateX(400%); }
 
         /* ============================================================
            HERO / BANNER
@@ -233,68 +217,40 @@
         .hero {
             position: relative;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            overflow: hidden;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            text-align: center; overflow: hidden;
         }
         .hero-bg {
-            position: absolute;
-            inset: 0;
+            position: absolute; inset: 0;
             background: url('images/lau-dai.jpg') center/cover no-repeat;
         }
         .hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(
-                180deg,
-                rgba(14,14,18,.50) 0%,
-                rgba(14,14,18,.72) 50%,
-                rgba(14,14,18,.95) 100%
-            );
+            position: absolute; inset: 0;
+            background: linear-gradient(180deg, rgba(14,14,18,.50) 0%, rgba(14,14,18,.72) 50%, rgba(14,14,18,.95) 100%);
         }
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            padding: 24px;
-            max-width: 800px;
-        }
-        .hero h1 {
-            font-size: clamp(2rem, 6vw, 3.8rem);
-            color: #fff;
-            margin-bottom: 8px;
-        }
+        .hero-content { position: relative; z-index: 2; padding: 24px; max-width: 800px; }
+        .hero h1 { font-size: clamp(2rem, 6vw, 3.8rem); color: #fff; margin-bottom: 8px; }
         .hero-sub {
             font-family: var(--font-heading);
-            font-style: italic;
-            font-weight: 400;
+            font-style: italic; font-weight: 400;
             font-size: clamp(1rem, 2.5vw, 1.4rem);
-            color: var(--gold);
-            margin-bottom: 20px;
-            letter-spacing: 2px;
+            color: var(--gold); margin-bottom: 20px; letter-spacing: 2px;
         }
         .hero-tagline {
             font-size: clamp(.9rem, 1.8vw, 1.1rem);
-            color: var(--text-muted);
-            font-weight: 300;
-            letter-spacing: .5px;
+            color: var(--text-muted); font-weight: 300; letter-spacing: .5px;
         }
         .hero-scroll {
-            position: absolute;
-            bottom: 28px; left: 50%;
-            transform: translateX(-50%);
-            z-index: 2;
+            position: absolute; bottom: 28px; left: 50%;
+            transform: translateX(-50%); z-index: 2;
             animation: bounce 2s infinite;
         }
         .hero-scroll span {
-            display: block;
-            width: 22px; height: 22px;
+            display: block; width: 22px; height: 22px;
             border-right: 2px solid var(--gold);
             border-bottom: 2px solid var(--gold);
-            transform: rotate(45deg);
-            opacity: .5;
+            transform: rotate(45deg); opacity: .5;
         }
         @keyframes bounce {
             0%,20%,50%,80%,100% { transform: translateX(-50%) translateY(0); }
@@ -305,58 +261,31 @@
         /* ============================================================
            ABOUT / GIỚI THIỆU
            ============================================================ */
-        .about {
-            padding: 100px 24px;
-            background: var(--bg);
-        }
-        .about-grid {
-            display: grid;
-            gap: 22px;
-            margin-top: 36px;
-        }
-        .about p {
-            font-size: 1.05rem;
-            color: var(--text-muted);
-            font-weight: 300;
-            line-height: 1.9;
-        }
+        .about { padding: 100px 24px; background: var(--bg); }
+        .about-grid { display: grid; gap: 22px; margin-top: 36px; }
+        .about p { font-size: 1.05rem; color: var(--text-muted); font-weight: 300; line-height: 1.9; }
         .about p strong { color: var(--text); font-weight: 500; }
-        .about-highlight {
-            border-left: 3px solid var(--purple);
-            padding-left: 20px;
-        }
+        .about-highlight { border-left: 3px solid var(--purple); padding-left: 20px; }
 
         /* ============================================================
            GALLERY CHUNG
            ============================================================ */
-        .gallery-section {
-            padding: 100px 24px;
-        }
-        .gallery-section:nth-child(even) {
-            background: var(--bg-light);
-        }
+        .gallery-section { padding: 100px 24px; }
+        .gallery-section:nth-child(even) { background: var(--bg-light); }
         .gallery-section p.desc {
-            font-size: 1.02rem;
-            color: var(--text-muted);
-            font-weight: 300;
-            line-height: 1.85;
-            margin-top: 14px;
-            max-width: 720px;
+            font-size: 1.02rem; color: var(--text-muted);
+            font-weight: 300; line-height: 1.85;
+            margin-top: 14px; max-width: 720px;
         }
-
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 36px;
+            gap: 20px; margin-top: 36px;
         }
-
         .gallery-item {
             position: relative;
-            border-radius: 14px;
-            overflow: hidden;
-            cursor: pointer;
-            aspect-ratio: 4/3;
+            border-radius: 14px; overflow: hidden;
+            cursor: pointer; aspect-ratio: 4/3;
             background: var(--bg-card);
         }
         .gallery-item img {
@@ -369,64 +298,65 @@
             box-shadow: 0 14px 44px var(--purple-glow);
         }
         .gallery-caption {
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
+            position: absolute; bottom: 0; left: 0; right: 0;
             padding: 22px 16px 14px;
             background: linear-gradient(transparent, rgba(14,14,18,.92));
-            font-size: .88rem;
-            color: var(--text-muted);
-            font-weight: 300;
-            pointer-events: none;
+            font-size: .88rem; color: var(--text-muted);
+            font-weight: 300; pointer-events: none;
         }
 
-        /* ============================================================
-           SECTION — 1 ẢNH LỚN (FULL-WIDTH CARD)
-           ============================================================ */
-        .single-image {
-            max-width: 720px;
-            margin: 36px auto 0;
+        /* Play button overlay cho video */
+        .gallery-item.video-item::after {
+            content: '▶';
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%,-50%);
+            width: 56px; height: 56px;
+            background: rgba(139,92,246,.85);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; color: #fff;
+            pointer-events: none;
+            transition: background .3s, transform .3s;
         }
+        .gallery-item.video-item:hover::after {
+            background: rgba(139,92,246,1);
+            transform: translate(-50%,-50%) scale(1.1);
+        }
+
+        /* Ảnh đơn */
+        .single-image { max-width: 720px; margin: 36px auto 0; }
 
         /* ============================================================
            LIGHTBOX
            ============================================================ */
         .lightbox {
-            display: none;
-            position: fixed;
-            inset: 0;
+            display: none; position: fixed; inset: 0;
             z-index: 10000;
             background: rgba(0,0,0,.93);
-            align-items: center;
-            justify-content: center;
-            padding: 24px;
-            cursor: pointer;
+            align-items: center; justify-content: center;
+            padding: 24px; cursor: pointer;
             backdrop-filter: blur(10px);
         }
         .lightbox.active { display: flex; }
-        .lightbox-content {
-            cursor: default;
-        }
+        .lightbox-content { cursor: default; }
         .lightbox-content img {
-            max-width: 92vw;
-            max-height: 88vh;
-            object-fit: contain;
-            border-radius: 8px;
+            max-width: 92vw; max-height: 88vh;
+            object-fit: contain; border-radius: 8px;
+        }
+        .lightbox-content video {
+            max-width: 92vw; max-height: 88vh;
+            border-radius: 8px; outline: none;
         }
         .lightbox-close {
-            position: absolute;
-            top: 18px; right: 24px;
-            font-size: 2.4rem;
-            color: #fff;
+            position: absolute; top: 18px; right: 24px;
+            font-size: 2.4rem; color: #fff;
             cursor: pointer;
             width: 46px; height: 46px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: flex; align-items: center; justify-content: center;
             border-radius: 50%;
             background: rgba(255,255,255,.08);
             transition: background .3s;
-            z-index: 10001;
-            line-height: 1;
+            z-index: 10001; line-height: 1;
         }
         .lightbox-close:hover { background: rgba(255,255,255,.2); }
 
@@ -439,39 +369,17 @@
             text-align: center;
             border-top: 1px solid rgba(139,92,246,.12);
         }
-        .footer-name {
-            font-family: var(--font-heading);
-            font-size: 1.5rem;
-            color: var(--text);
-            margin-bottom: 6px;
-        }
-        .footer-contact {
-            font-size: .95rem;
-            color: var(--text-muted);
-            font-weight: 300;
-            margin-bottom: 22px;
-        }
-        .footer-divider {
-            width: 40px; height: 2px;
-            background: var(--gold);
-            margin: 22px auto;
-        }
-        .footer-copy {
-            font-size: .82rem;
-            color: rgba(154,154,176,.55);
-            font-weight: 300;
-        }
+        .footer-name { font-family: var(--font-heading); font-size: 1.5rem; color: var(--text); margin-bottom: 6px; }
+        .footer-contact { font-size: .95rem; color: var(--text-muted); font-weight: 300; margin-bottom: 22px; }
+        .footer-divider { width: 40px; height: 2px; background: var(--gold); margin: 22px auto; }
+        .footer-copy { font-size: .82rem; color: rgba(154,154,176,.55); font-weight: 300; }
 
         /* ============================================================
            RESPONSIVE
            ============================================================ */
         @media (max-width: 768px) {
-            .about,
-            .gallery-section { padding: 64px 16px; }
-            .gallery-grid {
-                grid-template-columns: 1fr;
-                gap: 16px;
-            }
+            .about, .gallery-section { padding: 64px 16px; }
+            .gallery-grid { grid-template-columns: 1fr; gap: 16px; }
             .gallery-item { aspect-ratio: 16/10; }
             .clock-badge { width: 70px; height: 70px; font-size: .6rem; bottom: 70px; }
             .magic-ring--1 { width: 200px; height: 200px; }
@@ -487,7 +395,16 @@
 <body>
 
     <!-- ============================================================
-         LỚP TIA SÁNG MA THUẬT (CSS PARTICLES)
+         LANGUAGE SWITCHER
+         ============================================================ -->
+    <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="ja">JP</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="vi">VI</button>
+    </div>
+
+    <!-- ============================================================
+         LỚP TIA SÁNG MA THUẬT
          ============================================================ -->
     <div class="magic-particles" id="magicParticles"></div>
 
@@ -497,21 +414,16 @@
     <section class="hero" id="hero">
         <div class="hero-bg"></div>
         <div class="hero-overlay"></div>
-
-        <!-- Vòng tròn ánh sáng ma thuật -->
         <div class="magic-ring magic-ring--1"></div>
         <div class="magic-ring magic-ring--2"></div>
         <div class="magic-ring magic-ring--3"></div>
-
-        <!-- Badge đồng hồ ma thuật -->
         <div class="clock-badge">ĐỒNG<br>HỒ<br>MA THUẬT</div>
 
         <div class="hero-content">
-            <h1 class="glow-text">Chú Thỏ Harry &<br>Ảo Thuật Gia Mất Tích</h1>
-            <p class="hero-sub">Harry & The Lost Magician</p>
-            <p class="hero-tagline">Thiết kế & thi công sân khấu trình diễn animatronic — Nha Trang, 2023</p>
+            <h1 class="glow-text" data-i18n="hero_title">ハリーうさぎと<br>消えたマジシャン</h1>
+            <p class="hero-sub" data-i18n="hero_sub">Harry & The Lost Magician</p>
+            <p class="hero-tagline" data-i18n="hero_tagline">アニマトロニクス・ステージショーの設計・施工 — ニャチャン、2023年</p>
         </div>
-
         <div class="hero-scroll"><span></span></div>
     </section>
 
@@ -520,81 +432,135 @@
          ============================================================ -->
     <section class="about" id="about">
         <div class="container">
-            <h2 class="section-title fade-up">Giới thiệu dự án</h2>
+            <h2 class="section-title fade-up" data-i18n="about_title">プロジェクト紹介</h2>
             <div class="about-grid">
-                <p class="fade-up">
-                    <strong>"Chú Thỏ Harry & Ảo Thuật Gia Mất Tích"</strong> (tên chương trình: <strong>Đồng Hồ Ma Thuật / The Magic Clock</strong>) là show diễn nhập vai tổ chức tại sân khấu trong lâu đài cổ tích thuộc công viên giải trí ở Nha Trang, Khánh Hòa. Show kết hợp <strong>nhân vật animatronic chuyển động</strong>, ảo thuật sân khấu và hệ thống hiệu ứng ánh sáng – khói – âm thanh.
+                <p class="fade-up" data-i18n="about_p1">
+                    「<strong>ハリーうさぎと消えたマジシャン</strong>」（番組名：<strong>魔法の時計 / The Magic Clock</strong>）は、ニャチャン（カインホア省）の遊園地にあるお城で開催される没入型ステージショーです。<strong>動くアニマトロニクスキャラクター</strong>、マジックパフォーマンス、ライト・煙・音響エフェクトを融合し、観客に臨場感あふれる体験を提供します。
                 </p>
-                <p class="about-highlight fade-up">
-                    Tôi phụ trách phần <strong>thiết kế & thi công kỹ thuật sân khấu</strong> — bao gồm thiết kế cảnh trí (set design), chế tác đạo cụ, chế tạo & lắp đặt nhân vật animatronic (robot thỏ trắng, ảo thuật gia chuyển động), và hệ thống điều khiển cơ – điện (PLC, servo, tủ điện).
+                <p class="about-highlight fade-up" data-i18n="about_p2">
+                    本プロジェクトでは、<strong>ステージ技術の設計・施工</strong>を担当しました。セットデザイン、小道具製作、アニマトロニクスキャラクター（白うさぎロボット、動くマジシャン）の製作・設置、そしてメカ・電気制御システム（PLC、サーボ、制御盤）の構築を含みます。
                 </p>
-                <p class="fade-up">
-                    Dự án thực hiện năm 2023, đòi hỏi phối hợp kỹ năng cơ khí chính xác, lập trình điều khiển tự động và tư duy thiết kế sân khấu để mỗi nhân vật chuyển động mượt mà, đồng bộ với kịch bản trình diễn.
+                <p class="fade-up" data-i18n="about_p3">
+                    2023年に実施された本プロジェクトでは、精密機械工学、制御プログラミング、ステージデザインのスキルを融合し、各キャラクターが滑らかに動き、ショーの脚本と同期するようにしました。
                 </p>
             </div>
         </div>
     </section>
 
     <!-- ============================================================
-         THIẾT KẾ SÂN KHẤU & ĐẠO CỤ (SET DESIGN & PROPS)
+         THIẾT KẾ SÂN KHẤU & ĐẠO CỤ
          ============================================================ -->
     <section class="gallery-section" id="set-design">
         <div class="container">
-            <h2 class="section-title fade-up">Thiết kế sân khấu & Đạo cụ</h2>
-            <p class="desc fade-up">Dàn dựng không gian cổ điển nhập vai kết hợp chế tác đạo cụ thủ công — mỗi chi tiết đều được tính toán để phù hợp với câu chuyện và cơ chế trình diễn.</p>
+            <h2 class="section-title fade-up" data-i18n="set_title">ステージデザイン & 小道具</h2>
+            <p class="desc fade-up" data-i18n="set_desc">没入型のクラシックな空間演出と手作り小道具の融合 — すべてのディテールが物語とメカニズムに合わせて計算されています。</p>
 
             <div class="gallery-grid">
-                <!-- Ảnh 1: Cảnh trí cổ điển -->
-                <div class="gallery-item magic-shine fade-up" data-src="images/canh-tri-co-dien.jpg">
-                    <img src="images/canh-tri-co-dien.jpg" alt="Cảnh trí cổ điển: tường gạch, đèn cây chao đỏ, đồng hồ gỗ" loading="lazy">
-                    <div class="gallery-caption">Dàn dựng không gian cổ điển nhập vai</div>
+                <!-- Ảnh toàn cảnh sân khấu -->
+                <div class="gallery-item magic-shine fade-up" data-src="images/hinh-san-khau-anh-tim.jpg">
+                    <img src="images/hinh-san-khau-anh-tim.jpg" alt="Stage overview with staircase, Roman columns, purple-red lighting" loading="lazy">
+                    <div class="gallery-caption" data-i18n="set_cap1">ステージ全景 — 階段、ローマ風柱、ライト</div>
                 </div>
-
-                <!-- Ảnh 2: Đạo cụ cà rốt -->
+                <!-- Ảnh nhân vật bạc -->
+                <div class="gallery-item magic-shine fade-up" data-src="images/hinh-nhan-vat-bac.jpg">
+                    <img src="images/hinh-nhan-vat-bac.jpg" alt="Magician character in metallic costume on stage" loading="lazy">
+                    <div class="gallery-caption" data-i18n="set_cap2">マジシャンキャラクター — メタリック衣装</div>
+                </div>
+                <!-- Ảnh nhân vật đồng -->
+                <div class="gallery-item magic-shine fade-up" data-src="images/hinh-nhan-vat-dong.jpg">
+                    <img src="images/hinh-nhan-vat-dong.jpg" alt="Bronze magician with smoke and white rabbit" loading="lazy">
+                    <div class="gallery-caption" data-i18n="set_cap3">ブロンズキャラクター — 煙と光のエフェクト</div>
+                </div>
+                <!-- Ảnh cảnh trí cổ điển -->
+                <div class="gallery-item magic-shine fade-up" data-src="images/canh-tri-co-dien.jpg">
+                    <img src="images/canh-tri-co-dien.jpg" alt="Classic scenery: brick walls, red lamp, wooden clock" loading="lazy">
+                    <div class="gallery-caption" data-i18n="set_cap4">クラシックな空間演出</div>
+                </div>
+                <!-- Ảnh đạo cụ cà rốt -->
                 <div class="gallery-item magic-shine fade-up" data-src="images/ca-rot-dao-cu.jpg">
-                    <img src="images/ca-rot-dao-cu.jpg" alt="Đạo cụ cà rốt giả chế tác thủ công" loading="lazy">
-                    <div class="gallery-caption">Chế tác đạo cụ thủ công cho show</div>
+                    <img src="images/ca-rot-dao-cu.jpg" alt="Handcrafted carrot prop" loading="lazy">
+                    <div class="gallery-caption" data-i18n="set_cap5">手作り小道具 — ニンジン</div>
+                </div>
+                <!-- Ảnh bổ sung -->
+                <div class="gallery-item magic-shine fade-up" data-src="images/z4940902240363_86bcfb42432639018509bf1b32309b12.jpg">
+                    <img src="images/z4940902240363_86bcfb42432639018509bf1b32309b12.jpg" alt="Additional stage design view" loading="lazy">
+                    <div class="gallery-caption" data-i18n="set_cap6">追加アングル</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ============================================================
-         NHÂN VẬT ANIMATRONIC (CHARACTER ENGINEERING)
+         NHÂN VẬT ANIMATRONIC
          ============================================================ -->
     <section class="gallery-section" id="animatronic">
         <div class="container">
-            <h2 class="section-title fade-up">Nhân vật Animatronic</h2>
+            <h2 class="section-title fade-up" data-i18n="ani_title">アニマトロニクス</h2>
+            <p class="desc fade-up" data-i18n="ani_desc">動くロボットキャラクターの製作プロセス — 3Dモデルから内部メカニズム、完成品まで。</p>
 
-            <div class="single-image">
+            <div class="gallery-grid">
+                <!-- Model 3D thỏ -->
+                <div class="gallery-item magic-shine fade-up" data-src="images/hinh-model-3d-tho.jpg">
+                    <img src="images/hinh-model-3d-tho.jpg" alt="3D model of rabbit robot" loading="lazy">
+                    <div class="gallery-caption" data-i18n="ani_cap1">うさぎロボットの3Dモデル</div>
+                </div>
+                <!-- Cơ khí thỏ -->
+                <div class="gallery-item magic-shine fade-up" data-src="images/hinh-co-khi-tho.jpg">
+                    <img src="images/hinh-co-khi-tho.jpg" alt="Internal servo mechanism and wiring" loading="lazy">
+                    <div class="gallery-caption" data-i18n="ani_cap2">サーボ機構 & 配線</div>
+                </div>
+                <!-- Thỏ thành phẩm -->
                 <div class="gallery-item magic-shine fade-up" data-src="images/tho-canh-mat.jpg">
-                    <img src="images/tho-canh-mat.jpg" alt="Cận cảnh khuôn mặt nhân vật thỏ animatronic" loading="lazy">
-                    <div class="gallery-caption">Nhân vật thỏ animatronic — thành phẩm hoàn thiện</div>
+                    <img src="images/tho-canh-mat.jpg" alt="Finished rabbit animatronic close-up" loading="lazy">
+                    <div class="gallery-caption" data-i18n="ani_cap3">完成品 — うさぎアニマトロニクス</div>
+                </div>
+                <!-- Video 1 -->
+                <div class="gallery-item video-item magic-shine fade-up" data-src="images/vp9.mp4">
+                    <video src="images/vp9.mp4" muted preload="metadata" playsinline></video>
+                    <div class="gallery-caption" data-i18n="ani_cap4">動作ビデオ #1</div>
+                </div>
+                <!-- Video 2 -->
+                <div class="gallery-item video-item magic-shine fade-up" data-src="images/vp10.mp4">
+                    <video src="images/vp10.mp4" muted preload="metadata" playsinline></video>
+                    <div class="gallery-caption" data-i18n="ani_cap5">動作ビデオ #2</div>
                 </div>
             </div>
-
-            <p class="desc fade-up" style="margin-top:28px;">
-                Nhân vật thỏ trắng được chế tạo với các khớp chuyển động (đầu, tai, tay), tích hợp cơ cấu servo motor bên trong. Toàn bộ dây điện và mạch điều khiển được đi gọn gàng trong lớp lông bọc ngoài, đảm bảo thẩm mỹ khi trình diễn mà vẫn dễ bảo trì.
-            </p>
         </div>
     </section>
 
     <!-- ============================================================
-         HẬU TRƯỜNG THI CÔNG (BEHIND THE SCENES)
+         HỆ THỐNG ĐIỀU KHIỂN
+         ============================================================ -->
+    <section class="gallery-section" id="control-system">
+        <div class="container">
+            <h2 class="section-title fade-up" data-i18n="ctrl_title">制御システム</h2>
+            <p class="desc fade-up" data-i18n="ctrl_desc">中央制御盤 — すべての動きを同期かつ安全に制御します。</p>
+
+            <div class="gallery-grid" style="max-width:640px;">
+                <div class="gallery-item magic-shine fade-up" data-src="images/hinh-tu-dien.jpg">
+                    <img src="images/hinh-tu-dien.jpg" alt="Control cabinet with PLC, servo drives" loading="lazy">
+                    <div class="gallery-caption" data-i18n="ctrl_cap1">中央制御盤</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         HẬU TRƯỜNG THI CÔNG
          ============================================================ -->
     <section class="gallery-section" id="behind">
         <div class="container">
-            <h2 class="section-title fade-up">Hậu trường thi công</h2>
+            <h2 class="section-title fade-up" data-i18n="behind_title">舞台裏</h2>
 
             <div class="single-image">
                 <div class="gallery-item magic-shine fade-up" data-src="images/dung-san-khau.jpg">
-                    <img src="images/dung-san-khau.jpg" alt="Cảnh lắp dựng sân khấu, poster Đồng Hồ Ma Thuật" loading="lazy">
-                    <div class="gallery-caption">Quá trình lắp dựng sân khấu tại hiện trường</div>
+                    <img src="images/dung-san-khau.jpg" alt="Stage construction in progress" loading="lazy">
+                    <div class="gallery-caption" data-i18n="behind_cap1">現場での設営プロセス</div>
                 </div>
             </div>
 
-            <p class="desc fade-up" style="margin-top:28px;">
-                Từ bản vẽ đến hiện trường — quá trình lắp dựng bao gồm vận chuyển thiết bị, dựng khung sân khấu, bố trí cảnh trí, lắp đặt nhân vật và đấu nối hệ thống điện. Mỗi bước đều được giám sát chặt chẽ để đảm bảo an toàn và đúng tiến độ.
+            <p class="desc fade-up" style="margin-top:28px;" data-i18n="behind_desc">
+                図面から現場へ — 機材の搬入、ステージフレームの組み立て、セットの配置、キャラクターの設置、電気系統の接続。すべての工程が安全とスケジュールを守るために厳密に管理されました。
             </p>
         </div>
     </section>
@@ -604,8 +570,8 @@
          ============================================================ -->
     <footer class="footer" id="contact">
         <div class="container">
-            <p class="footer-name">[HỌ TÊN CỦA BẠN]</p>
-            <p class="footer-contact">Liên hệ: <a href="mailto:[email@example.com]">[email@example.com]</a></p>
+            <p class="footer-name">Mori Keishi</p>
+            <p class="footer-contact"><span data-i18n="footer_contact">お問い合わせ:</span> <a href="mailto:mori.keishi01@gmail.com">mori.keishi01@gmail.com</a></p>
             <div class="footer-divider"></div>
             <p class="footer-copy">&copy; 2023 — All rights reserved.</p>
         </div>
@@ -626,9 +592,132 @@
         document.addEventListener('DOMContentLoaded', function () {
 
             /* ========================================================
-               1. TẠO TIA SÁNG MA THUẬT (CSS PARTICLES)
+               1. BẢN DỊCH ĐA NGÔN NGỮ (JA / EN / VI)
                ======================================================== */
-            (function initMagicParticles() {
+            var translations = {
+                ja: {
+                    hero_title: 'ハリーうさぎと<br>消えたマジシャン',
+                    hero_sub: 'Harry & The Lost Magician',
+                    hero_tagline: 'アニマトロニクス・ステージショーの設計・施工 — ニャチャン、2023年',
+                    about_title: 'プロジェクト紹介',
+                    about_p1: '「<strong>ハリーうさぎと消えたマジシャン</strong>」（番組名：<strong>魔法の時計 / The Magic Clock</strong>）は、ニャチャン（カインホア省）の遊園地にあるお城で開催される没入型ステージショーです。<strong>動くアニマトロニクスキャラクター</strong>、マジックパフォーマンス、ライト・煙・音響エフェクトを融合し、観客に臨場感あふれる体験を提供します。',
+                    about_p2: '本プロジェクトでは、<strong>ステージ技術の設計・施工</strong>を担当しました。セットデザイン、小道具製作、アニマトロニクスキャラクター（白うさぎロボット、動くマジシャン）の製作・設置、そしてメカ・電気制御システム（PLC、サーボ、制御盤）の構築を含みます。',
+                    about_p3: '2023年に実施された本プロジェクトでは、精密機械工学、制御プログラミング、ステージデザインのスキルを融合し、各キャラクターが滑らかに動き、ショーの脚本と同期するようにしました。',
+                    set_title: 'ステージデザイン & 小道具',
+                    set_desc: '没入型のクラシックな空間演出と手作り小道具の融合 — すべてのディテールが物語とメカニズムに合わせて計算されています。',
+                    set_cap1: 'ステージ全景 — 階段、ローマ風柱、ライト',
+                    set_cap2: 'マジシャンキャラクター — メタリック衣装',
+                    set_cap3: 'ブロンズキャラクター — 煙と光のエフェクト',
+                    set_cap4: 'クラシックな空間演出',
+                    set_cap5: '手作り小道具 — ニンジン',
+                    set_cap6: '追加アングル',
+                    ani_title: 'アニマトロニクス',
+                    ani_desc: '動くロボットキャラクターの製作プロセス — 3Dモデルから内部メカニズム、完成品まで。',
+                    ani_cap1: 'うさぎロボットの3Dモデル',
+                    ani_cap2: 'サーボ機構 & 配線',
+                    ani_cap3: '完成品 — うさぎアニマトロニクス',
+                    ani_cap4: '動作ビデオ #1',
+                    ani_cap5: '動作ビデオ #2',
+                    ctrl_title: '制御システム',
+                    ctrl_desc: '中央制御盤 — すべての動きを同期かつ安全に制御します。',
+                    ctrl_cap1: '中央制御盤',
+                    behind_title: '舞台裏',
+                    behind_desc: '図面から現場へ — 機材の搬入、ステージフレームの組み立て、セットの配置、キャラクターの設置、電気系統の接続。すべての工程が安全とスケジュールを守るために厳密に管理されました。',
+                    behind_cap1: '現場での設営プロセス',
+                    footer_contact: 'お問い合わせ:'
+                },
+                en: {
+                    hero_title: 'Harry & The<br>Lost Magician',
+                    hero_sub: 'Harry & The Lost Magician',
+                    hero_tagline: 'Animatronic stage show — design & technical production, Nha Trang 2023',
+                    about_title: 'About the Project',
+                    about_p1: '"<strong>Harry & The Lost Magician</strong>" (show name: <strong>The Magic Clock</strong>) is an immersive stage show held at a fairy-tale castle in an amusement park in Nha Trang, Khanh Hoa. The show combines <strong>moving animatronic characters</strong>, magic performances, and light — smoke — sound effects to deliver a vivid experience for the audience.',
+                    about_p2: 'I was responsible for <strong>stage technical design & production</strong> — including set design, prop making, fabrication & installation of animatronic characters (white rabbit robot, moving magician), and the mechanical-electrical control system (PLC, servo, control cabinet).',
+                    about_p3: 'Carried out in 2023, the project required a blend of precision mechanical engineering, control programming, and stage design thinking to ensure each character moves smoothly and synchronizes with the show script.',
+                    set_title: 'Set Design & Props',
+                    set_desc: 'Immersive classical scenery combined with handcrafted props — every detail is calculated to fit the story and performance mechanics.',
+                    set_cap1: 'Stage overview — staircase, Roman columns, string lights',
+                    set_cap2: 'Magician character — metallic costume',
+                    set_cap3: 'Bronze character — smoke & lighting effects',
+                    set_cap4: 'Classical immersive scenery',
+                    set_cap5: 'Handcrafted prop — carrot',
+                    set_cap6: 'Additional angle',
+                    ani_title: 'Animatronic Characters',
+                    ani_desc: 'The making of moving robot characters — from 3D model to internal mechanism and finished product.',
+                    ani_cap1: '3D model of rabbit robot',
+                    ani_cap2: 'Servo mechanism & wiring',
+                    ani_cap3: 'Finished rabbit animatronic',
+                    ani_cap4: 'Operation video #1',
+                    ani_cap5: 'Operation video #2',
+                    ctrl_title: 'Control System',
+                    ctrl_desc: 'Central control cabinet — synchronizing and safeguarding all movements.',
+                    ctrl_cap1: 'Central control cabinet',
+                    behind_title: 'Behind the Scenes',
+                    behind_desc: 'From drawings to site — transporting equipment, assembling stage frames, arranging scenery, installing characters, and connecting electrical systems. Every step was strictly monitored for safety and schedule compliance.',
+                    behind_cap1: 'Stage construction in progress',
+                    footer_contact: 'Contact:'
+                },
+                vi: {
+                    hero_title: 'Chú Thỏ Harry &<br>Ảo Thuật Gia Mất Tích',
+                    hero_sub: 'Harry & The Lost Magician',
+                    hero_tagline: 'Thiết kế & thi công sân khấu trình diễn animatronic — Nha Trang, 2023',
+                    about_title: 'Giới thiệu dự án',
+                    about_p1: '「<strong>Chú Thỏ Harry & Ảo Thuật Gia Mất Tích</strong>」(tên chương trình: <strong>Đồng Hồ Ma Thuật / The Magic Clock</strong>) là show diễn nhập vai tổ chức tại sân khấu trong lâu đài cổ tích thuộc công viên giải trí ở Nha Trang, Khánh Hòa. Show kết hợp <strong>nhân vật animatronic chuyển động</strong>, ảo thuật sân khấu và hệ thống hiệu ứng ánh sáng – khói – âm thanh.',
+                    about_p2: 'Tôi phụ trách phần <strong>thiết kế & thi công kỹ thuật sân khấu</strong> — bao gồm thiết kế cảnh trí (set design), chế tác đạo cụ, chế tạo & lắp đặt nhân vật animatronic (robot thỏ trắng, ảo thuật gia chuyển động), và hệ thống điều khiển cơ – điện (PLC, servo, tủ điện).',
+                    about_p3: 'Dự án thực hiện năm 2023, đòi hỏi phối hợp kỹ năng cơ khí chính xác, lập trình điều khiển tự động và tư duy thiết kế sân khấu để mỗi nhân vật chuyển động mượt mà, đồng bộ với kịch bản trình diễn.',
+                    set_title: 'Thiết kế sân khấu & Đạo cụ',
+                    set_desc: 'Dàn dựng không gian cổ điển nhập vai kết hợp chế tác đạo cụ thủ công — mỗi chi tiết đều được tính toán để phù hợp với câu chuyện và cơ chế trình diễn.',
+                    set_cap1: 'Toàn cảnh sân khấu — cầu thang, cột La Mã, đèn dây',
+                    set_cap2: 'Nhân vật ảo thuật gia — bộ đồ ánh kim',
+                    set_cap3: 'Nhân vật đồng — hiệu ứng khói & ánh sáng',
+                    set_cap4: 'Không gian cổ điển nhập vai',
+                    set_cap5: 'Đạo cụ thủ công — cà rốt',
+                    set_cap6: 'Góc nhìn bổ sung',
+                    ani_title: 'Nhân vật Animatronic',
+                    ani_desc: 'Quy trình chế tạo nhân vật robot chuyển động — từ mô hình 3D, cơ cấu bên trong đến thành phẩm.',
+                    ani_cap1: 'Mô hình 3D robot thỏ',
+                    ani_cap2: 'Cơ cấu servo & dây điện',
+                    ani_cap3: 'Thỏ animatronic — thành phẩm',
+                    ani_cap4: 'Video vận hành #1',
+                    ani_cap5: 'Video vận hành #2',
+                    ctrl_title: 'Hệ thống điều khiển',
+                    ctrl_desc: 'Tủ điện điều khiển trung tâm — đảm bảo mọi chuyển động diễn ra đồng bộ và an toàn.',
+                    ctrl_cap1: 'Tủ điện điều khiển trung tâm',
+                    behind_title: 'Hậu trường thi công',
+                    behind_desc: 'Từ bản vẽ đến hiện trường — vận chuyển thiết bị, dựng khung sân khấu, bố trí cảnh trí, lắp đặt nhân vật và đấu nối hệ thống điện. Mỗi bước đều được giám sát chặt chẽ để đảm bảo an toàn và đúng tiến độ.',
+                    behind_cap1: 'Quá trình lắp dựng sân khấu',
+                    footer_contact: 'Liên hệ:'
+                }
+            };
+
+            function setLanguage(lang) {
+                var t = translations[lang];
+                if (!t) return;
+                document.querySelectorAll('[data-i18n]').forEach(function (el) {
+                    var key = el.getAttribute('data-i18n');
+                    if (t[key]) el.innerHTML = t[key];
+                });
+                document.documentElement.lang = lang;
+                document.querySelectorAll('.lang-btn').forEach(function (btn) {
+                    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+                });
+                localStorage.setItem('preferred-lang', lang);
+            }
+
+            // Đọc ngôn ngữ đã lưu hoặc mặc định JA
+            var savedLang = localStorage.getItem('preferred-lang') || 'ja';
+            setLanguage(savedLang);
+
+            document.querySelectorAll('.lang-btn').forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    setLanguage(btn.getAttribute('data-lang'));
+                });
+            });
+
+            /* ========================================================
+               2. TẠO TIA SÁNG MA THUẬT (CSS PARTICLES)
+               ======================================================== */
+            (function () {
                 var container = document.getElementById('magicParticles');
                 var colors = ['#D4AF37', '#E6C65A', '#8B5CF6', '#A78BFA', '#fff'];
 
@@ -637,33 +726,24 @@
                     s.className = 'sparkle';
                     s.style.left = Math.random() * 100 + '%';
                     s.style.bottom = '-10px';
-                    s.style.width = (Math.random() * 4 + 3) + 'px';
-                    s.style.height = s.style.width;
-                    s.style.background = colors[Math.floor(Math.random() * colors.length)];
-                    s.style.boxShadow = '0 0 6px ' + s.style.background + ', 0 0 14px ' + s.style.background;
+                    var size = (Math.random() * 4 + 3) + 'px';
+                    s.style.width = size;
+                    s.style.height = size;
+                    var c = colors[Math.floor(Math.random() * colors.length)];
+                    s.style.background = c;
+                    s.style.boxShadow = '0 0 6px ' + c + ', 0 0 14px ' + c;
                     s.style.animationDuration = (Math.random() * 5 + 5) + 's';
                     s.style.animationDelay = (Math.random() * 3) + 's';
                     container.appendChild(s);
-
-                    setTimeout(function () {
-                        s.remove();
-                    }, 12000);
+                    setTimeout(function () { s.remove(); }, 12000);
                 }
-
-                // Tạo 12 tia sáng ban đầu
-                for (var i = 0; i < 12; i++) {
-                    createSparkle();
-                }
-                // Tạo thêm liên tục mỗi 800ms
-                setInterval(function () {
-                    createSparkle();
-                }, 800);
+                for (var i = 0; i < 12; i++) createSparkle();
+                setInterval(createSparkle, 800);
             })();
 
             /* ========================================================
-               2. FADE-IN KHI CUỘN (IntersectionObserver)
+               3. FADE-IN KHI CUỘN (IntersectionObserver)
                ======================================================== */
-            var fadeEls = document.querySelectorAll('.fade-up');
             var observer = new IntersectionObserver(function (entries) {
                 entries.forEach(function (entry) {
                     if (entry.isIntersecting) {
@@ -673,25 +753,35 @@
                 });
             }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
-            fadeEls.forEach(function (el) { observer.observe(el); });
+            document.querySelectorAll('.fade-up').forEach(function (el) { observer.observe(el); });
 
             /* ========================================================
-               3. LIGHTBOX — MỞ ẢNH LỚN
+               4. LIGHTBOX — MỞ ẢNH / VIDEO LỚN
                ======================================================== */
-            var lightbox      = document.getElementById('lightbox');
+            var lightbox = document.getElementById('lightbox');
             var lightboxContent = document.getElementById('lightboxContent');
             var lightboxClose = document.getElementById('lightboxClose');
-            var galleryItems  = document.querySelectorAll('.gallery-item');
 
-            galleryItems.forEach(function (item) {
+            document.querySelectorAll('.gallery-item').forEach(function (item) {
                 item.addEventListener('click', function (e) {
                     e.stopPropagation();
                     var src = item.getAttribute('data-src');
                     lightboxContent.innerHTML = '';
-                    var img = document.createElement('img');
-                    img.src = src;
-                    img.alt = item.querySelector('img') ? item.querySelector('img').alt : '';
-                    lightboxContent.appendChild(img);
+                    if (src.match(/\.mp4$/i)) {
+                        var vid = document.createElement('video');
+                        vid.src = src;
+                        vid.controls = true;
+                        vid.autoplay = true;
+                        vid.playsInline = true;
+                        vid.style.maxWidth = '92vw';
+                        vid.style.maxHeight = '88vh';
+                        lightboxContent.appendChild(vid);
+                    } else {
+                        var img = document.createElement('img');
+                        img.src = src;
+                        img.alt = item.querySelector('img') ? item.querySelector('img').alt : '';
+                        lightboxContent.appendChild(img);
+                    }
                     lightbox.classList.add('active');
                     document.body.style.overflow = 'hidden';
                 });
@@ -700,28 +790,41 @@
             function closeLightbox() {
                 lightbox.classList.remove('active');
                 document.body.style.overflow = '';
+                var vid = lightboxContent.querySelector('video');
+                if (vid) { vid.pause(); vid.src = ''; }
                 lightboxContent.innerHTML = '';
             }
 
-            lightboxClose.addEventListener('click', function (e) {
-                e.stopPropagation();
-                closeLightbox();
-            });
-            lightbox.addEventListener('click', function (e) {
-                if (e.target === lightbox) closeLightbox();
-            });
-            document.addEventListener('keydown', function (e) {
-                if (e.key === 'Escape') closeLightbox();
+            lightboxClose.addEventListener('click', function (e) { e.stopPropagation(); closeLightbox(); });
+            lightbox.addEventListener('click', function (e) { if (e.target === lightbox) closeLightbox(); });
+            document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLightbox(); });
+
+            /* ========================================================
+               5. TỰ ĐỘNG PLAY/PAUSE VIDEO KHI VÀO/RA VIEWPORT
+               ======================================================== */
+            var videoObserver = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    var vid = entry.target;
+                    if (entry.isIntersecting) {
+                        vid.play().catch(function () {});
+                    } else {
+                        vid.pause();
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            document.querySelectorAll('.gallery-item.video-item video').forEach(function (v) {
+                videoObserver.observe(v);
             });
 
             /* ========================================================
-               4. HIỆU ỨNG PARALLAX NHẸ CHO HERO (CUỘN CHUỘT)
+               6. PARALLAX NHẸ CHO HERO
                ======================================================== */
             var heroBg = document.querySelector('.hero-bg');
             window.addEventListener('scroll', function () {
-                var scrollY = window.scrollY;
-                if (scrollY < window.innerHeight) {
-                    heroBg.style.transform = 'translateY(' + (scrollY * 0.3) + 'px)';
+                var sy = window.scrollY;
+                if (sy < window.innerHeight) {
+                    heroBg.style.transform = 'translateY(' + (sy * 0.3) + 'px)';
                 }
             }, { passive: true });
 
