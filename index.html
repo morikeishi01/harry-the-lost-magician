@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -570,9 +570,9 @@
          LANGUAGE SWITCHER
          ============================================================ -->
     <div class="lang-switcher">
-        <button class="lang-btn active" data-lang="vi">VI</button>
-        <button class="lang-btn" data-lang="ja">JP</button>
+        <button class="lang-btn active" data-lang="ja">JP</button>
         <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="vi">VI</button>
     </div>
 
     <!-- ============================================================
@@ -831,7 +831,7 @@
         document.addEventListener('DOMContentLoaded', function () {
 
             // --- Ngôn ngữ: đọc từ localStorage hoặc mặc định 'vi' ---
-            var savedLang = localStorage.getItem('preferred-lang') || 'vi';
+            var savedLang = localStorage.getItem('preferred-lang') || 'ja';
             setLanguage(savedLang);
 
             // Gán sự kiện cho nút ngôn ngữ
